@@ -16,6 +16,13 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {
   const [task, setTask] = React.useState(initialTask);
   const [showDialog, setShowDialog] = React.useState(false);
 
+  // ✅ FIX: When the dialog opens, reset the form fields to the current task
+  React.useEffect(() => {
+    if (showDialog) {
+      setTask(initialTask);
+    }
+  }, [showDialog, initialTask]);
+
   const handleSetChecked = () => {
     const updatedTask = { ...task, isChecked: !task.isChecked };
     setTask(updatedTask);
@@ -51,5 +58,4 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {
     </Dialog>
   );
 }
-
 export { Task };

@@ -9,10 +9,9 @@ interface AddTaskProps {
   onAdd: (title: string, category: string) => void;
 }
 
-function AddTask({ onAdd }: AddTaskProps) {
+export default function AddTask({ onAdd }: AddTaskProps) {
   const [showDialog, setShowDialog] = React.useState(false);
   const [dialogKey, setDialogKey] = React.useState(0);
-
   const [task, setTask] = React.useState<{ title: string; category: string }>({
     title: '',
     category: '',
