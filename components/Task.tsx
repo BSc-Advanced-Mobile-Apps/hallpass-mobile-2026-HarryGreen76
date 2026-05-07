@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-
 import { TaskDialogue } from '@/components/ui/TaskDialogue';
 import { Text } from '@/components/ui/text';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -16,6 +15,13 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {
   const [task, setTask] = React.useState(initialTask);
   const [showDialog, setShowDialog] = React.useState(false);
 
+  // ✅ FIX: When the dialog opens, reset the form fields to the current task
+  React.useEffect(() => {
+    if (showDialog) {
+      setTask(initialTask);
+    }
+  }, [showDialog, initialTask]);
+
   const handleSetChecked = () => {
     const updatedTask = { ...task, isChecked: !task.isChecked };
     setTask(updatedTask);
@@ -30,6 +36,7 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {
         <TouchableOpacity className="flex w-full flex-row">
           <View className="flex h-full w-24 px-8 py-5">
             <Checkbox
+              testID="checkbox"
               className="border-foreground checked:bg-foreground"
               checked={task.isChecked}
               onCheckedChange={handleSetChecked}
