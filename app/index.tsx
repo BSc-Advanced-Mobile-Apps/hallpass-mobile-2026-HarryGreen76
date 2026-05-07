@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ScrollView, View } from 'react-native';
 import { Text } from '@/components/ui/text';
 import { Task } from '@/components/Task';
-import { AddTask } from '@/components/Addtask';
+import AddTask from '@/components/AddTask';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Key for storing tasks in AsyncStorage
