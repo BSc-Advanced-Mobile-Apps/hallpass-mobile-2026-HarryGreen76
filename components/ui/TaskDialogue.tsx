@@ -32,6 +32,8 @@ export function TaskDialogue({
   const [editedTitle, setEditedTitle] = React.useState(task.title);
   const [editedCategory, setEditedCategory] = React.useState(task.category);
 
+  const isNewtask = task.title === '' && task.category === '';
+
   // ✅ FIX: Sync modal fields whenever a task is opened
   React.useEffect(() => {
     if (showDialog) {
@@ -60,9 +62,9 @@ export function TaskDialogue({
   };
 
   return (
-    <DialogContent className="max-w-5/6">
+    <DialogContent className="w-96-w-5/6">
       <DialogHeader>
-        <DialogTitle>Edit Task</DialogTitle>
+        <DialogTitle> {isNewtask ? 'Add Task' : 'Edit Task'}</DialogTitle>
         <DialogDescription>Make changes to your task details here.</DialogDescription>
       </DialogHeader>
 
