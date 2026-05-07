@@ -24,11 +24,13 @@ export default function AddTask({ onAdd }: AddTaskProps) {
       setShowDialog(false);
     }
   };
+
   React.useEffect(() => {
     if (!showDialog) {
       setDialogKey((prev) => prev + 1);
     }
   }, [showDialog]);
+
   return (
     <View className="absolute bottom-0 z-10">
       <Dialog open={showDialog} onOpenChange={setShowDialog}>

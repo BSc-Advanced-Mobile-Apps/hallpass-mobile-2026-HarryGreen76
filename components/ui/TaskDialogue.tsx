@@ -32,7 +32,6 @@ export function TaskDialogue({
   const [editedTitle, setEditedTitle] = React.useState(task.title);
   const [editedCategory, setEditedCategory] = React.useState(task.category);
 
-  // ✅ FIX: Sync modal fields whenever a task is opened
   React.useEffect(() => {
     if (showDialog) {
       setEditedTitle(task.title);
