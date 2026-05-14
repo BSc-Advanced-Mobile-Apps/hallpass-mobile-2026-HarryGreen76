@@ -61,6 +61,10 @@ export function TaskDialogue({
     setShowDialog(false);
   };
 
+  const handleDelete = () => {
+    console.log('task Deleted');
+  };
+
   return (
     <DialogContent className="w-96-w-5/6">
       <DialogHeader>
@@ -83,6 +87,10 @@ export function TaskDialogue({
 
         <Button className="bg-brand-primary flex-1w-1/2 rounded-3xl" onPress={handleSave}>
           <Text>Save changes</Text>
+        </Button>
+
+        <Button className="bg-brand-primary flex-1w-1/2 rounded-3xl" onPress={handleDelete}>
+          <Text> Delete Task </Text>
         </Button>
       </DialogFooter>
     </DialogContent>

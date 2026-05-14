@@ -61,13 +61,15 @@ describe('Task', () => {
       id: 1,
       title: 'Test Task',
       category: 'Test Category',
-      isChecked: false,
+      isChecked: true,
     };
 
     render(<Task task={task} />);
 
-    const taskElement = screen.getByText('Test Task');
+    const taskdialog = screen.getByTestId('task-dialog'); // Find the dialog element
     const user = userEvent.setup();
-    await user.press(taskElement);
+    await user.press(taskdialog);
+    const dialogTitle = screen.getByText('Task Details');
+    expect(dialogTitle).toBeTruthy();
   });
 });
