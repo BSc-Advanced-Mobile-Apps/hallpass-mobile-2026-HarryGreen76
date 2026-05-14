@@ -39,7 +39,6 @@ describe('Task', () => {
   });
 
   test('toggles from checked to unchecked when pressed', async () => {
-    n;
     const task = {
       id: 1,
       title: 'Test Task',
