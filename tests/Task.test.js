@@ -55,4 +55,19 @@ describe('Task', () => {
 
     expect(checkbox).not.toBeChecked();
   });
+
+  test('show dialog box when tapped', async () => {
+    const task = {
+      id: 1,
+      title: 'Test Task',
+      category: 'Test Category',
+      isChecked: false,
+    };
+
+    render(<Task task={task} />);
+
+    const taskElement = screen.getByText('Test Task');
+    const user = userEvent.setup();
+    await user.press(taskElement);
+  });
 });
