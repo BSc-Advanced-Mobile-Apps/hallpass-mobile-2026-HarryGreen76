@@ -16,6 +16,7 @@ import { ITask } from '@/app';
 
 interface TaskDialogProps {
   onSave?: (task: ITask) => void;
+  onDelete?: (id: number) => void;
   task: ITask;
   setTask: (task: ITask) => void;
   setShowDialog: (showDialog: boolean) => void;
@@ -24,6 +25,7 @@ interface TaskDialogProps {
 
 export function TaskDialogue({
   onSave,
+  onDelete,
   task,
   setTask,
   setShowDialog,
@@ -61,10 +63,6 @@ export function TaskDialogue({
     setShowDialog(false);
   };
 
-  const handleDelete = () => {
-    console.log('task Deleted');
-  };
-
   return (
     <DialogContent className="w-96-w-5/6">
       <DialogHeader>
@@ -81,7 +79,8 @@ export function TaskDialogue({
       <DialogFooter>
         <Button
           className="border-brand-primary flex-1 rounded-3xl border bg-transparent"
-          onPress={() => setShowDialog(false)}>
+          // onPress={() => onDelete?.(task.id)}
+        >
           <Text className="text-brand-primary">Cancel</Text>
         </Button>
 
@@ -89,7 +88,9 @@ export function TaskDialogue({
           <Text>Save changes</Text>
         </Button>
 
-        <Button className="bg-brand-primary flex-1w-1/2 rounded-3xl" onPress={handleDelete}>
+        <Button
+          className="bg-brand-primary flex-1w-1/2 rounded-3xl"
+          onPress={() => onDelete?.(task.id)}>
           <Text> Delete Task </Text>
         </Button>
       </DialogFooter>

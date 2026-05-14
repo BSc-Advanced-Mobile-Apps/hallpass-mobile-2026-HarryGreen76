@@ -9,6 +9,7 @@ import { ITask } from '@/app';
 interface TaskProps {
   task: ITask;
   onUpdate?: (task: ITask) => void;
+  onDelete?: (id: number) => void;
 }
 
 function Task({ task: initialTask, onUpdate }: TaskProps) {
