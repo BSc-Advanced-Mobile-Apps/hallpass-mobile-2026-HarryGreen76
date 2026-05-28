@@ -12,7 +12,7 @@ interface TaskProps {
   onDelete?: (id: number) => void;
 }
 
-function Task({ task: initialTask, onUpdate }: TaskProps) {
+function Task({ task: initialTask, onDelete, onUpdate }: TaskProps) {
   const [task, setTask] = React.useState(initialTask);
   const [showDialog, setShowDialog] = React.useState(false);
 
@@ -55,6 +55,8 @@ function Task({ task: initialTask, onUpdate }: TaskProps) {
         setTask={setTask}
         setShowDialog={setShowDialog}
         showDialog={showDialog}
+        onUpdate={onUpdate}
+        onDelete={onDelete}
       />
     </Dialog>
   );

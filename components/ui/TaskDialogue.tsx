@@ -17,6 +17,7 @@ import { ITask } from '@/app';
 interface TaskDialogProps {
   onSave?: (task: ITask) => void;
   onDelete?: (id: number) => void;
+  onUpdate?: (task: ITask) => void;
   task: ITask;
   setTask: (task: ITask) => void;
   setShowDialog: (showDialog: boolean) => void;
@@ -26,6 +27,7 @@ interface TaskDialogProps {
 export function TaskDialogue({
   onSave,
   onDelete,
+  onUpdate,
   task,
   setTask,
   setShowDialog,
@@ -53,8 +55,15 @@ export function TaskDialogue({
 
     setTask(nextTask);
 
+    if (onUpdate) {
+      onUpdate(nextTask);
+      setShowDialog(false);
+      return;
+    }
+
     if (onSave) {
       onSave(nextTask);
+      setShowDialog(false);
       return;
     }
 
@@ -77,13 +86,6 @@ export function TaskDialogue({
       </View>
 
       <DialogFooter>
-        <Button
-          className="border-brand-primary flex-1 rounded-3xl border bg-transparent"
-          // onPress={() => onDelete?.(task.id)}
-        >
-          <Text className="text-brand-primary">Cancel</Text>
-        </Button>
-
         <Button className="bg-brand-primary flex-1w-1/2 rounded-3xl" onPress={handleSave}>
           <Text>Save changes</Text>
         </Button>
